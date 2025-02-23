@@ -1,3 +1,1 @@
-import AppComponent from "./App";
-
-export const App = AppComponent;
+export * from "./ThemeProvider";

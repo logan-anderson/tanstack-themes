@@ -9,7 +9,7 @@ export default defineConfig((options) => ({
     clean: true,
     sourcemap: true,
     target: "es2022",
-    external: ["react", "react/jsx-runtime"],
+    external: ["react", "react/jsx-runtime", "vinxi", "zod", "@tanstack/start"],
     minify: !options.watch,
     tsconfig: "tsconfig.lib.json",
     // banner: { js: '"use client";' },
