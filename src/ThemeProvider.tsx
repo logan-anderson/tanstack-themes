@@ -4,13 +4,14 @@ import { getCookie, setCookie } from "vinxi/http";
 import { z } from "zod";
 
 const themeModeSchema = z.enum(["light", "dark", "system"]);
+const THEME_COOKIE_NAME = "theme";
 
 type ThemeMode = z.infer<typeof themeModeSchema>;
 
 const updateThemeCookie = createServerFn({ method: "POST" })
   .validator(themeModeSchema)
   .handler((ctx) => {
-    setCookie("theme", ctx.data, {
+    setCookie(THEME_COOKIE_NAME, ctx.data, {
       httpOnly: false,
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
@@ -22,10 +23,9 @@ const updateThemeCookie = createServerFn({ method: "POST" })
 
 export const getThemeCookie: () => Promise<ThemeMode> =
   createServerFn().handler(() => {
-    return (
-      themeModeSchema.catch("system").parse(getCookie("theme") ?? "null") ||
-      "system"
-    );
+    const cookie = getCookie(THEME_COOKIE_NAME);
+    const parsed = themeModeSchema.catch("system").parse(cookie ?? "system");
+    return parsed;
   });
 
 type ThemeProviderProps = {

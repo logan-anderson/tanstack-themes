@@ -1,5 +1,11 @@
 # tanstack-themes
 
+## 0.0.7
+
+### Patch Changes
+
+- refactor getThemeCookie
+
 ## 0.0.6
 
 ### Patch Changes
