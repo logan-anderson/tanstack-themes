@@ -15,6 +15,7 @@ const updateThemeCookie = createServerFn({ method: "POST" })
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
       path: "/",
+      // 10 years
       maxAge: 60 * 60 * 24 * 365 * 10,
     });
   });
