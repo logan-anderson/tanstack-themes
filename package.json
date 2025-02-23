@@ -1,6 +1,6 @@
 {
   "name": "tanstack-themes",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -21,6 +21,26 @@
       "require": {
         "types": "./dist/index.d.cts",
         "require": "./dist/index.cjs"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server.d.ts",
+        "import": "./dist/server.js"
+      },
+      "require": {
+        "types": "./dist/server.d.cts",
+        "require": "./dist/server.cjs"
+      }
+    },
+    "./schemas": {
+      "import": {
+        "types": "./dist/schemas.d.ts",
+        "import": "./dist/schemas.js"
+      },
+      "require": {
+        "types": "./dist/schemas.d.cts",
+        "require": "./dist/schemas.cjs"
       }
     }
   },

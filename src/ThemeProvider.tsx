@@ -1,31 +1,17 @@
 import { createServerFn } from "@tanstack/start";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCookie, setCookie } from "vinxi/http";
-import { z } from "zod";
-
-const themeModeSchema = z.enum(["light", "dark", "system"]);
-const THEME_COOKIE_NAME = "theme";
-
-type ThemeMode = z.infer<typeof themeModeSchema>;
+import { ThemeMode, themeModeSchema } from "./schemas";
+import { setThemeCookie } from "./server";
 
 const updateThemeCookie = createServerFn({ method: "POST" })
   .validator(themeModeSchema)
   .handler((ctx) => {
-    setCookie(THEME_COOKIE_NAME, ctx.data, {
-      httpOnly: false,
-      sameSite: "lax",
-      secure: process.env.NODE_ENV === "production",
-      path: "/",
-      // 10 years
-      maxAge: 60 * 60 * 24 * 365 * 10,
-    });
+    setThemeCookie(ctx.data);
   });
 
 export const getThemeCookie: () => Promise<ThemeMode> =
   createServerFn().handler(() => {
-    const cookie = getCookie(THEME_COOKIE_NAME);
-    const parsed = themeModeSchema.catch("system").parse(cookie ?? "system");
-    return parsed;
+    return getThemeCookie();
   });
 
 type ThemeProviderProps = {

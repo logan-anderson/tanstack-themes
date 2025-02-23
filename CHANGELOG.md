@@ -1,5 +1,11 @@
 # tanstack-themes
 
+## 0.0.9
+
+### Patch Changes
+
+- add server / schemas entry points
+
 ## 0.0.7
 
 ### Patch Changes
