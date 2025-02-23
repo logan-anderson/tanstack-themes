@@ -1,5 +1,11 @@
 # tanstack-themes
 
+## 0.0.5
+
+### Patch Changes
+
+- a9856ba: add theme provider
+
 ## 0.0.4
 
 ### Patch Changes
