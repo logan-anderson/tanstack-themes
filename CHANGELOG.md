@@ -1,5 +1,11 @@
 # tanstack-themes
 
+## 0.0.13
+
+### Patch Changes
+
+- Refactor ThemeProvider to accept updateThemeCookie as a prop
+
 ## 0.0.9
 
 ### Patch Changes
