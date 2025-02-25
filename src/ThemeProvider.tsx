@@ -1,23 +1,11 @@
-import { createServerFn } from "@tanstack/start";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ThemeMode, themeModeSchema } from "./schemas";
-import { setThemeCookie } from "./server";
-
-const updateThemeCookie = createServerFn({ method: "POST" })
-  .validator(themeModeSchema)
-  .handler((ctx) => {
-    setThemeCookie(ctx.data);
-  });
-
-export const getThemeCookie: () => Promise<ThemeMode> =
-  createServerFn().handler(() => {
-    return getThemeCookie();
-  });
+import { ThemeMode } from "./schemas";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
   defaultTheme?: ThemeMode;
   storageKey?: string;
+  updateThemeCookie: ({ data }: { data: ThemeMode }) => void;
 };
 
 type ThemeProviderState = {
@@ -36,6 +24,7 @@ export function ThemeProvider({
   children,
   defaultTheme = "system",
   storageKey = "vite-ui-theme",
+  updateThemeCookie,
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<ThemeMode>(() => {

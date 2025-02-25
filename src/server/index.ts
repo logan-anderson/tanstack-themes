@@ -18,4 +18,3 @@ export const getThemeCookie = (): ThemeMode => {
     const cookie = getCookie(THEME_COOKIE_NAME);
     return themeModeSchema.catch("system").parse(cookie ?? "system");
 };
-
