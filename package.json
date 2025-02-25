@@ -1,12 +1,12 @@
 {
   "name": "tanstack-themes",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/*"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -25,12 +25,12 @@
     },
     "./server": {
       "import": {
-        "types": "./dist/server.d.ts",
-        "import": "./dist/server.js"
+        "types": "./dist/server/index.d.ts",
+        "import": "./dist/server/index.js"
       },
       "require": {
-        "types": "./dist/server.d.cts",
-        "require": "./dist/server.cjs"
+        "types": "./dist/server/index.d.cts",
+        "require": "./dist/server/index.cjs"
       }
     },
     "./schemas": {
